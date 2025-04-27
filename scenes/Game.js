@@ -125,6 +125,12 @@ export default class Game extends Phaser.Scene {
     if (this.cursors.up.isDown && this.player.body.touching.down) {
       this.player.setVelocityY(-330);
     }
+
+    if (this.gameOver === true) {
+      this.input.keyboard.on("keydown-R", function (event) {
+        this.scene.start("game");
+      }, this);
+    }
   }
 
   collectStar(player, star) {
