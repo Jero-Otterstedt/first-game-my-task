@@ -160,5 +160,29 @@ export default class Game extends Phaser.Scene {
     this.player.anims.play("turn");
 
     this.gameOver = true;
+    if (this.timeGO === true){
+      this.gameOver = true
+    }
+    
+    if (this.gameOver === true) {
+      this.gameovertext = this.add.text(100, 250, "GAME OVER", {
+        fontSize: "100px",
+        fill: "red"
+      })
+      this.restartText = this.add.text(130,335, "Presiona R para reiniciar juego", {
+        fontSize: "32px",
+        fill: "#000"
+      })
+      this.physics.pause();
+
+      this.player.setTint(0xff0000);
+  
+      this.player.anims.play("turn");
+      if (this.timeGO === true){
+        this.timeText.setX(600)
+        this.timeText.setText(`Time's Up!`);
+        this.timeText.setColor("red")
+      }
+    }
   }
 }
